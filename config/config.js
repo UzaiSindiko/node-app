@@ -1,9 +1,14 @@
+const env = (name) => {
+  const value = process.env[name]
+  if (!value) console.log(`ERROR: env key "${name}" not found\n`)
+  return value
+}
+
 module.exports = {
-  MONGO_IP: process.env.MONGO_IP || "mongo",
-  MONGO_PORT: process.env.MONGO_PORT || 27017,
-  MONGO_USER: process.env.MONGO_USER,
-  MONGO_PASSWORD: process.env.MONGO_PASSWORD,
-  REDIS_URL: process.env.REDIS_URL || "redis",
-  REDIS_PORT: process.env.REDIS_PORT || 6379,
-  SESSION_SECRET: process.env.SESSION_SECRET || "asd",
+  twelveHoursDividedBy2minute: 360,
+  jwtSecret: env("JWT_SECRET"),
+  QRSecret: env("QR_SECRET"),
+  secretKeySecret: env("SECRET_KEY_SECRET"),
+  jobRetryTime: "in 1 second",
+  maxJobRetries: 5,
 }
